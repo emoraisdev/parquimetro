@@ -30,6 +30,8 @@ public class Permanencia {
 
     private OpcaoPagamento opcaoPagamento;
 
+    private Integer statusPagamento;
+
     private PermanenciaStatus status;
 
     private Boolean tempoFixo;
