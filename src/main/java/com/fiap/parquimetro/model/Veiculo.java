@@ -1,11 +1,15 @@
 package com.fiap.parquimetro.model;
 
+import com.fiap.parquimetro.model.enums.TipoVeiculo;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
+@AllArgsConstructor
 public class Veiculo {
 
     @Id
@@ -17,7 +21,10 @@ public class Veiculo {
 
     private String modelo;
 
-    private Integer tipo;
+    private TipoVeiculo tipo;
 
     private String cor;
+
+    @DBRef
+    private Condutor condutor;
 }
