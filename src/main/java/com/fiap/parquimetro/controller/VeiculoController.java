@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/veiculos")
 public class VeiculoController {
@@ -23,5 +25,16 @@ public class VeiculoController {
     @GetMapping("/{id}")
     public ResponseEntity<VeiculoDTO> get(@PathVariable String id){
         return ResponseEntity.ok().body(service.get(id));
+    }
+
+    @GetMapping("/bycondutor/{id}")
+    public ResponseEntity<List<VeiculoDTO>> getByCondutorId(@PathVariable String id){
+        return ResponseEntity.ok().body(service.getByCondutorId(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> update(@RequestBody VeiculoDTO veiculoDTO){
+        service.update(veiculoDTO);
+        return ResponseEntity.ok().build();
     }
 }

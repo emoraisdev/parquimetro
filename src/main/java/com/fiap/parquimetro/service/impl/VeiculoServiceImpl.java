@@ -5,11 +5,15 @@ import com.fiap.parquimetro.exception.BusinessException;
 import com.fiap.parquimetro.exception.EntityNotFoundException;
 import com.fiap.parquimetro.model.Condutor;
 import com.fiap.parquimetro.model.Veiculo;
+import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.model.enums.TipoVeiculo;
 import com.fiap.parquimetro.repository.VeiculoRepository;
 import com.fiap.parquimetro.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VeiculoServiceImpl implements VeiculoService {
@@ -18,14 +22,29 @@ public class VeiculoServiceImpl implements VeiculoService {
     private VeiculoRepository repo;
 
     @Override
-    public VeiculoDTO criar(VeiculoDTO veiculoDTO) {
+    public VeiculoDTO criar(VeiculoDTO dto) {
 
-        return toDTO(repo.save(toEntity(veiculoDTO)));
+        var veiculo = toEntity(dto);
+        veiculo.setStatus(Status.ATIVO);
+
+        return toDTO(repo.save(veiculo));
     }
 
     @Override
     public VeiculoDTO get(String id) {
         return toDTO(repo.findById(id).orElseThrow(() -> new EntityNotFoundException("Veículo")));
+    }
+
+    @Override
+    public List<VeiculoDTO> getByCondutorId(String id) {
+        return repo.findByCondutorId(id).stream().map(this::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public void update(VeiculoDTO dto) {
+
+        this.get(dto.id());
+        repo.save(toEntity(dto));
     }
 
     public Veiculo toEntity(VeiculoDTO dto){
@@ -36,6 +55,7 @@ public class VeiculoServiceImpl implements VeiculoService {
                 dto.modelo(),
                 TipoVeiculo.fromValue(dto.tipo()),
                 dto.cor(),
+                dto.status() != null ?  Status.fromValue(dto.status()) : null,
                 new Condutor(dto.idCondutor())
         );
     }
@@ -48,6 +68,7 @@ public class VeiculoServiceImpl implements VeiculoService {
                 veiculo.getModelo(),
                 veiculo.getTipo().getValue(),
                 veiculo.getCor(),
+                veiculo.getStatus().getValue(),
                 "0"
         );
     }

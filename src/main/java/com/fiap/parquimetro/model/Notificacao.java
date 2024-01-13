@@ -1,5 +1,6 @@
 package com.fiap.parquimetro.model;
 
+import com.fiap.parquimetro.model.enums.NotificaoStatus;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,5 +20,5 @@ public class Notificacao {
 
     private LocalDateTime dateTime;
 
-    private Integer status;
+    private NotificaoStatus status;
 }

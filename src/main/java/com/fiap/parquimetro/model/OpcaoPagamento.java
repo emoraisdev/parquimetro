@@ -1,5 +1,6 @@
 package com.fiap.parquimetro.model;
 
+import com.fiap.parquimetro.model.enums.Status;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,5 +12,5 @@ public class OpcaoPagamento {
 
     private String opcao;
 
-    private Integer status;
+    private Status status;
 }

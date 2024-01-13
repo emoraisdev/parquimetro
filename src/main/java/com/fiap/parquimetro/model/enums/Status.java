@@ -3,18 +3,18 @@ package com.fiap.parquimetro.model.enums;
 import lombok.Getter;
 
 @Getter
-public enum TipoVeiculo {
+public enum Status {
 
-    CARRO(0), MOTO(1), CAMINHAO(2);
+    INATIVO(0), ATIVO(1);
 
     private int value;
 
-    TipoVeiculo(int value){
+    Status(int value){
         this.value = value;
     }
 
-    public static TipoVeiculo fromValue(int value){
-        for (TipoVeiculo status : TipoVeiculo.values()) {
+    public static Status fromValue(int value){
+        for (Status status : Status.values()) {
             if (status.getValue() == value) {
                 return status;
             }

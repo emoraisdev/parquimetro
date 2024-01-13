@@ -7,6 +7,7 @@ public record VeiculoDTO(
         String modelo,
         Integer tipo,
         String cor,
+        Integer status,
         String idCondutor
 ) {
 }

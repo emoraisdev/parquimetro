@@ -1,6 +1,7 @@
 package com.fiap.parquimetro.model;
 
 
+import com.fiap.parquimetro.model.enums.Status;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -23,6 +24,8 @@ public class Condutor {
     private String email;
 
     private String telefone;
+
+    private Status status;
 
     private OpcaoPagamento opcaoPagamentoPreferida;
 

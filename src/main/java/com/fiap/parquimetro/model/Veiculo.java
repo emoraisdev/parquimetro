@@ -1,5 +1,6 @@
 package com.fiap.parquimetro.model;
 
+import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.model.enums.TipoVeiculo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,8 @@ public class Veiculo {
     private TipoVeiculo tipo;
 
     private String cor;
+
+    private Status status;
 
     @DBRef
     private Condutor condutor;
