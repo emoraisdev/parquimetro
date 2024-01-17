@@ -39,4 +39,8 @@ public class Permanencia {
     private Boolean tempoFixo;
 
     private Integer horasTempoFixo;
+
+    public Permanencia(String id){
+        this.id = id;
+    }
 }

@@ -1,5 +1,6 @@
 package com.fiap.parquimetro.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
@@ -7,10 +8,11 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.time.Period;
+import java.time.Duration;
 
 @Document
 @Data
+@AllArgsConstructor
 public class Recibo {
 
     @Id
@@ -20,7 +22,7 @@ public class Recibo {
 
     private BigDecimal valorTotal;
 
-    private Period tempoPermanencia;
+    private Duration tempoPermanencia;
 
     @DBRef
     private Permanencia permanencia;

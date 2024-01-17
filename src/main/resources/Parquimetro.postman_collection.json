@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "36a267b3-b1ff-4fd9-8238-7ec53e77c4de",
+		"name": "Parquimetro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23155843"
+	},
+	"item": [
+		{
+			"name": "Veiculo",
+			"item": [
+				{
+					"name": "Salvar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"ABC-1235\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Argus\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Azul\",\r\n    \"idCondutor\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos/65a1f4cb750f1a4d90be412",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos",
+								"65a1f4cb750f1a4d90be412"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarPorCondutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"ABC-1234\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Branco\",\r\n    \"idCondutor\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos/bycondutor/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos",
+								"bycondutor",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"65a288448aae794a1a65c558\",\r\n    \"placa\": \"ABC-1111\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Vermelho\",\r\n    \"status\": 1,\r\n    \"idCondutor\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recibo",
+			"item": [
+				{
+					"name": "Obter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recibos/65a72e7d95c790577219f4a0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recibos",
+								"65a72e7d95c790577219f4a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarPorCondutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"ABC-1234\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Branco\",\r\n    \"idCondutor\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/recibos/bycondutor/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"recibos",
+								"bycondutor",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
