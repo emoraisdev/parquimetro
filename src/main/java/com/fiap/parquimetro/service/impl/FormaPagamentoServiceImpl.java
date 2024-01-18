@@ -31,11 +31,10 @@ public class FormaPagamentoServiceImpl {
         FormaPagamento novaFormaPagamento = formaPagamentoRepository.save(formaPagamentoService.toEntity(formaPagamentoDTO));
         Condutor condutor = condutorOpt.get();
 
-        if (condutor.getFormaPagamentos() == null) {
-            condutor.setFormaPagamentos(List.of(novaFormaPagamento));
-        } else {
-            condutor.getFormaPagamentos().add(novaFormaPagamento);
+        if (condutor.getOpcaoPagamentoPreferida() == null) {
+            condutor.setOpcaoPagamentoPreferida(novaFormaPagamento);
         }
+
         condutorRepository.save(condutor);
         return formaPagamentoService.toDTO(novaFormaPagamento);
     }

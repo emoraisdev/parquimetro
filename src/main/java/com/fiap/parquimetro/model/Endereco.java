@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Document
 @Data
-public class Local {
+public class Endereco {
 
     @Id
     private String id;
@@ -28,9 +28,4 @@ public class Local {
 
     private Integer numero;
 
-    private BigDecimal valorHoraVariavel;
-
-    private BigDecimal valorHoraFixa;
-
-    private Status status;
 }

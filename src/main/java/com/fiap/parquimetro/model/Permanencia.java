@@ -23,7 +23,7 @@ public class Permanencia {
     private Veiculo veiculo;
 
     @DBRef
-    private Local local;
+    private LocalVaga local;
 
     private LocalDateTime entrada;
 
