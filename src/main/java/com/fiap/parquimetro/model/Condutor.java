@@ -27,7 +27,7 @@ public class Condutor {
 
     private Status status;
 
-    private OpcaoPagamento opcaoPagamentoPreferida;
+    private FormaPagamento opcaoPagamentoPreferida;
 
     public Condutor(String id){
         this.id = id;

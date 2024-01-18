@@ -1,6 +1,6 @@
 package com.fiap.parquimetro.model;
 
-import com.fiap.parquimetro.model.enums.PagamentoStatus;
+import com.fiap.parquimetro.model.enums.FormaPagamentoStatus;
 import com.fiap.parquimetro.model.enums.PermanenciaStatus;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -30,9 +30,9 @@ public class Permanencia {
     private LocalDateTime saida;
 
     @DBRef
-    private OpcaoPagamento opcaoPagamento;
+    private FormaPagamento opcaoPagamento;
 
-    private PagamentoStatus statusPagamento;
+    private FormaPagamentoStatus statusPagamento;
 
     private PermanenciaStatus status;
 
