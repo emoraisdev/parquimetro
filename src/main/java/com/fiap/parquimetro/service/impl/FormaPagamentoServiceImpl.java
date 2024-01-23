@@ -16,10 +16,9 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class FormaPagamentoServiceImpl {
+public class FormaPagamentoServiceImpl implements FormaPagamentoService {
     private final CondutorRepository condutorRepository;
     private final FormaPagamentoRepository formaPagamentoRepository;
-    private final FormaPagamentoService formaPagamentoService;
 
     public FormaPagamentoDTO criarFormaPagamento(FormaPagamentoDTO formaPagamentoDTO) {
         String condutorId = formaPagamentoDTO.getCondutorId();
@@ -28,7 +27,7 @@ public class FormaPagamentoServiceImpl {
             throw new DataIntegrityViolationException("Condutor com ID não encontrado: " + condutorId);
         }
 
-        FormaPagamento novaFormaPagamento = formaPagamentoRepository.save(formaPagamentoService.toEntity(formaPagamentoDTO));
+        FormaPagamento novaFormaPagamento = formaPagamentoRepository.save(toEntity(formaPagamentoDTO));
         Condutor condutor = condutorOpt.get();
 
         if (condutor.getOpcaoPagamentoPreferida() == null) {
@@ -36,7 +35,7 @@ public class FormaPagamentoServiceImpl {
         }
 
         condutorRepository.save(condutor);
-        return formaPagamentoService.toDTO(novaFormaPagamento);
+        return toDTO(novaFormaPagamento);
     }
 
     public Optional<FormaPagamento> obterFormaPagamento(String id) {
@@ -46,11 +45,31 @@ public class FormaPagamentoServiceImpl {
     public List<FormaPagamentoDTO> findAll() {
         return formaPagamentoRepository.findAll()
                 .stream()
-                .map(formaPagamentoService::toDTO)
+                .map(this::toDTO)
                 .collect(Collectors.toList());
     }
 
     public void deleteAll() {
         formaPagamentoRepository.deleteAll();
+    }
+
+    @Override
+    public FormaPagamentoDTO toDTO(FormaPagamento formaPagamento) {
+        return new FormaPagamentoDTO(
+            formaPagamento.getId(),
+            formaPagamento.getDescricao(),
+            formaPagamento.getTipo(),
+            formaPagamento.getCondutorId()
+        );
+    }
+
+    @Override
+    public FormaPagamento toEntity(FormaPagamentoDTO dto) {
+        return new FormaPagamento(
+                dto.getId(),
+                dto.getDescricao(),
+                dto.getTipo(),
+                dto.getCondutorId()
+        );
     }
 }

@@ -13,8 +13,8 @@ public enum PermanenciaStatus {
         this.value = value;
     }
 
-    public static TipoVeiculo fromValue(int value){
-        for (TipoVeiculo status : TipoVeiculo.values()) {
+    public static PermanenciaStatus fromValue(int value){
+        for (PermanenciaStatus status : PermanenciaStatus.values()) {
             if (status.getValue() == value) {
                 return status;
             }
