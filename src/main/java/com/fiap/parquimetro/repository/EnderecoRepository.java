@@ -1,15 +1,11 @@
 package com.fiap.parquimetro.repository;
 
 import com.fiap.parquimetro.model.Condutor;
-import com.fiap.parquimetro.model.Veiculo;
+import com.fiap.parquimetro.model.Endereco;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface CondutorRepository extends MongoRepository<Condutor, String> {
-    boolean existsByEmail(String email);
-
+public interface EnderecoRepository extends MongoRepository<Endereco, String> {
 
 }
