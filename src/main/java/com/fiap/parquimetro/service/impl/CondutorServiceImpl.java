@@ -1,22 +1,17 @@
 package com.fiap.parquimetro.service.impl;
 
 import com.fiap.parquimetro.dto.CondutorDTO;
-import com.fiap.parquimetro.dto.FormaPagamentoDTO;
-import com.fiap.parquimetro.dto.VeiculoDTO;
 import com.fiap.parquimetro.exception.EntityNotFoundException;
-import com.fiap.parquimetro.model.*;
+import com.fiap.parquimetro.model.Condutor;
+import com.fiap.parquimetro.model.FormaPagamento;
 import com.fiap.parquimetro.model.enums.Status;
-import com.fiap.parquimetro.model.enums.TipoVeiculo;
 import com.fiap.parquimetro.repository.CondutorRepository;
 import com.fiap.parquimetro.repository.EnderecoRepository;
 import com.fiap.parquimetro.repository.FormaPagamentoRepository;
-import com.fiap.parquimetro.repository.VeiculoRepository;
 import com.fiap.parquimetro.service.CondutorService;
-import com.fiap.parquimetro.service.VeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Optional;
