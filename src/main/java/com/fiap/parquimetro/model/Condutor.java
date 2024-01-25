@@ -2,6 +2,7 @@ package com.fiap.parquimetro.model;
 
 
 import com.fiap.parquimetro.model.enums.Status;
+import com.fiap.parquimetro.model.enums.TipoFormaPagamento;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -32,7 +33,7 @@ public class Condutor {
     private Endereco endereco;
 
     @DBRef
-    private FormaPagamento opcaoPagamentoPreferida;
+    private TipoFormaPagamento opcaoPagamentoPreferida;
 
 
     public Condutor(String id){

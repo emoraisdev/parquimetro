@@ -1,6 +1,6 @@
 package com.fiap.parquimetro.model;
 
-import com.fiap.parquimetro.model.enums.FormaPagamentoStatus;
+import com.fiap.parquimetro.model.enums.PagamentoStatus;
 import com.fiap.parquimetro.model.enums.PermanenciaStatus;
 import com.fiap.parquimetro.model.enums.TipoFormaPagamento;
 import lombok.AllArgsConstructor;
@@ -38,7 +38,7 @@ public class Permanencia {
 
     private TipoFormaPagamento tipoPagamento;
 
-    private FormaPagamentoStatus statusPagamento;
+    private PagamentoStatus statusPagamento;
 
     private PermanenciaStatus status;
 
