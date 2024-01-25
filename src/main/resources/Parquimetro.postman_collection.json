@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "36a267b3-b1ff-4fd9-8238-7ec53e77c4de",
+		"_postman_id": "ce1717b6-0d17-4bae-8c33-18793f835632",
 		"name": "Parquimetro",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23155843"
+		"_exporter_id": "843251"
 	},
 	"item": [
 		{
@@ -195,6 +195,159 @@
 								"recibos",
 								"bycondutor",
 								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Condutor",
+			"item": [
+				{
+					"name": "Salvar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Jose da Silva\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": 986767788,\n    \"status\": 1,\n    \"endereco\": {\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"idFormaPagamentoPreferida\":\"65b080244cc930175c0785b3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/condutor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"condutor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/condutor/65b0853c66500d264cfdfc9b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"condutor",
+								"65b0853c66500d264cfdfc9b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/condutor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"condutor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"65b0853c66500d264cfdfc9b\",\n    \"nome\": \"Jose da Silva testte alteracao\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": \"986767788\",\n    \"status\": 1,\n    \"endereco\": {\n        \"id\": \"65b0853c66500d264cfdfc9a\",\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"idFormaPagamentoPreferida\": \"65b080244cc930175c0785b3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/condutor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"condutor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notificacao",
+			"item": [
+				{
+					"name": "Salvar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mensagem\": \"teste\",\n    \"idCondutor\" : \"65b0853c66500d264cfdfc9b\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"status\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/notificacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notificacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/notificacao/65b1c01a4111b7770dd8843e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notificacao",
+								"65b1c01a4111b7770dd8843e"
 							]
 						}
 					},
