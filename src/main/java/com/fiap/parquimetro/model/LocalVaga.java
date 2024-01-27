@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 @Data
 public class LocalVaga extends Endereco {
 
+    @Id
+    private String id;
+
     private BigDecimal valorHoraVariavel;
 
     private BigDecimal valorHoraFixa;
