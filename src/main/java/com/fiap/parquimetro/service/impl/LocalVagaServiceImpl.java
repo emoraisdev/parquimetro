@@ -45,7 +45,13 @@ public class LocalVagaServiceImpl implements LocalVagaService {
             localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
             localVaga.setValorHoraFixa(localVagaDTO.valorHoraFixa());
             localVaga.setStatus(localVagaDTO.status());
-
+            localVaga.setRua(localVagaDTO.rua());
+            localVaga.setNumero(localVagaDTO.numero());
+            localVaga.setBairro(localVagaDTO.bairro());
+            localVaga.setCidade(localVagaDTO.cidade());
+            localVaga.setEstado(localVagaDTO.estado());
+            localVaga.setPais(localVagaDTO.pais());
+            localVaga.setCep(localVagaDTO.cep());
             localVagaRepository.save(localVaga);
 
             return toDTO(localVaga);
@@ -53,6 +59,7 @@ public class LocalVagaServiceImpl implements LocalVagaService {
             throw new RuntimeException("Vaga local não encontrada com o ID: " + id);
         }
     }
+
     @Override
     public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO) {
         var localVaga = toEntity(localVagaDTO);
@@ -60,7 +67,7 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         return toDTO(localVagaRepository.save(localVaga));
     }
 
-    public BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaInputDTO, Permanencia permanencia) {
+    private BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaInputDTO, Permanencia permanencia) {
         if (localVagaInputDTO.valorHoraFixa() != null) {
             return calcularValorHoraFixa(localVagaInputDTO, permanencia);
         } else if (localVagaInputDTO.valorHoraVariavel() != null) {
