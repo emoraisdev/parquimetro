@@ -3,6 +3,7 @@ package com.fiap.parquimetro.service.impl;
 import com.fiap.parquimetro.dto.LocalVagaDTO;
 import com.fiap.parquimetro.model.LocalVaga;
 import com.fiap.parquimetro.model.Permanencia;
+import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.repository.LocalVagaRepository;
 import com.fiap.parquimetro.service.LocalVagaService;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,14 @@ public class LocalVagaServiceImpl implements LocalVagaService {
             throw new IllegalArgumentException("Os valores de hora fixa e variável não estão definidos.");
         }
     }
+
+    @Override
+    public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO) {
+        var localVaga = toEntity(localVagaDTO);
+
+        return toDTO(localVagaRepository.save(localVaga));
+    }
+
 
     private BigDecimal calcularValorHoraFixa(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
         BigDecimal valorFixoPorHora = new BigDecimal("10.0");

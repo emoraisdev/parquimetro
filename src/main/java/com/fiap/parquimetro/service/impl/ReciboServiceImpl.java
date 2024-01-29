@@ -29,6 +29,10 @@ public class ReciboServiceImpl implements ReciboService {
         return repo.findByCondutorId(id).stream().map(this::toDTO).collect(Collectors.toList());
     }
 
+    public Recibo salva(Recibo recibo){
+        return repo.save(recibo);
+    }
+
     public Recibo toEntity(ReciboDTO dto) {
         return new Recibo(
                 dto.id(),

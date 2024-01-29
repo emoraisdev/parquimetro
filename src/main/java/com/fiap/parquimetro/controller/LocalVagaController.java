@@ -28,4 +28,9 @@ public class LocalVagaController {
         BigDecimal resultado = localVagaService.calcularValorEstacionamento(localVagaDTO, permanencia);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
+
+    @PostMapping
+    public  ResponseEntity<LocalVagaDTO> salvarVaga(@RequestBody LocalVagaDTO localVagaDTO){
+        return new ResponseEntity<>(localVagaService.salvarVaga(localVagaDTO),HttpStatus.CREATED);
+    }
 }

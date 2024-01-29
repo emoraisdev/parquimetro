@@ -10,4 +10,5 @@ public interface LocalVagaService {
 
     BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaDTO, Permanencia permanencia);
 
+    LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO);
 }

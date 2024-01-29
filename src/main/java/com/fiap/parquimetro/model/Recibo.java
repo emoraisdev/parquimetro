@@ -13,6 +13,7 @@ import java.time.Duration;
 @Document
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Recibo {
 
     @Id

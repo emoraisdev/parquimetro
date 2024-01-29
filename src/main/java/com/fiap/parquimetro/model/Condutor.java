@@ -32,7 +32,6 @@ public class Condutor {
     @DBRef
     private Endereco endereco;
 
-    @DBRef
     private TipoFormaPagamento opcaoPagamentoPreferida;
 
 

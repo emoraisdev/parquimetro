@@ -4,6 +4,7 @@ import com.fiap.parquimetro.dto.CondutorDTO;
 import com.fiap.parquimetro.service.impl.CondutorServiceImpl;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ import java.util.List;
 @RequestMapping("/condutor")
 public class CondutorController {
 
-    private final CondutorServiceImpl condutorService;
+    @Autowired
+    private CondutorServiceImpl condutorService;
 
     @PostMapping()
     public ResponseEntity<CondutorDTO> createCondutor(@RequestBody @Valid CondutorDTO condutorDTO) {

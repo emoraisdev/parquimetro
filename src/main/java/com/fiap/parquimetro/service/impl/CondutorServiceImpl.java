@@ -3,11 +3,9 @@ package com.fiap.parquimetro.service.impl;
 import com.fiap.parquimetro.dto.CondutorDTO;
 import com.fiap.parquimetro.exception.EntityNotFoundException;
 import com.fiap.parquimetro.model.Condutor;
-import com.fiap.parquimetro.model.FormaPagamento;
 import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.repository.CondutorRepository;
 import com.fiap.parquimetro.repository.EnderecoRepository;
-import com.fiap.parquimetro.repository.FormaPagamentoRepository;
 import com.fiap.parquimetro.service.CondutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -24,18 +22,10 @@ public class CondutorServiceImpl implements CondutorService {
     private CondutorRepository repository;
 
     @Autowired
-    private FormaPagamentoRepository formaPagamentoRepository;
-
-    @Autowired
     private EnderecoRepository enderecoRepository;
 
     @Override
     public CondutorDTO criar(CondutorDTO dto) {
-
-        Optional<FormaPagamento> formaPagamentoOptional =  formaPagamentoRepository.findById(dto.idFormaPagamentoPreferida());
-        if (formaPagamentoOptional.isEmpty()) {
-            throw new DataIntegrityViolationException("Forma de pagamento não encontrada: " + dto.idFormaPagamentoPreferida());
-        }
 
         var condutorEndereco = dto.endereco();
         var condutor = toEntity(dto);
@@ -74,7 +64,7 @@ public class CondutorServiceImpl implements CondutorService {
                 condutorDTO.telefone(),
                 condutorDTO.status() != null ?  Status.fromValue(condutorDTO.status()) : null,
                 condutorDTO.endereco(),
-                new FormaPagamento(condutorDTO.idFormaPagamentoPreferida())
+                condutorDTO.formaPagamentoPreferida()
         );
     }
 
@@ -87,7 +77,7 @@ public class CondutorServiceImpl implements CondutorService {
                 condutor.getTelefone(),
                 condutor.getStatus().getValue(),
                 condutor.getEndereco(),
-                condutor.getOpcaoPagamentoPreferida().getId()
+                condutor.getOpcaoPagamentoPreferida()
         );
     }
 }

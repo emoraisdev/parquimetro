@@ -2,6 +2,7 @@ package com.fiap.parquimetro.dto;
 
 
 import com.fiap.parquimetro.model.Endereco;
+import com.fiap.parquimetro.model.enums.TipoFormaPagamento;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,6 @@ public record CondutorDTO(
         @NotNull(message = "O status nome não pode ser nulo")
         Integer status,
         Endereco endereco,
-        String idFormaPagamentoPreferida
+        TipoFormaPagamento formaPagamentoPreferida
 ) {
 }

@@ -11,5 +11,5 @@ public interface PermanenciaRepository extends MongoRepository<Permanencia, Stri
 
     public List<Permanencia> findByCondutorId(String id);
 
-    public List<Permanencia> findByStatus(PermanenciaStatus status);
+    public List<Permanencia> findByPermanenciaStatus(PermanenciaStatus permanenciaStatus);
 }

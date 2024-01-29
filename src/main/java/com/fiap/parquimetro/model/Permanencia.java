@@ -3,10 +3,7 @@ package com.fiap.parquimetro.model;
 import com.fiap.parquimetro.model.enums.PagamentoStatus;
 import com.fiap.parquimetro.model.enums.PermanenciaStatus;
 import com.fiap.parquimetro.model.enums.TipoFormaPagamento;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Permanencia {
 
     @Id
@@ -38,9 +36,9 @@ public class Permanencia {
 
     private TipoFormaPagamento tipoPagamento;
 
-    private PagamentoStatus statusPagamento;
+    private PagamentoStatus pagamentoStatus;
 
-    private PermanenciaStatus status;
+    private PermanenciaStatus permanenciaStatus;
 
     private Boolean tempoFixo;
 
