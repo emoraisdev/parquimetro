@@ -3,7 +3,6 @@ package com.fiap.parquimetro.service.impl;
 import com.fiap.parquimetro.dto.LocalVagaDTO;
 import com.fiap.parquimetro.model.LocalVaga;
 import com.fiap.parquimetro.model.Permanencia;
-import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.repository.LocalVagaRepository;
 import com.fiap.parquimetro.service.LocalVagaService;
 import lombok.RequiredArgsConstructor;
@@ -32,16 +31,28 @@ public class LocalVagaServiceImpl implements LocalVagaService {
     }
 
     @Override
-    public BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
-        if (localVagaDTO.valorHoraFixa() != null) {
-            return calcularValorHoraFixa(localVagaDTO, permanencia);
-        } else if (localVagaDTO.valorHoraVariavel() != null) {
-            return calcularValorHoraVariavel(localVagaDTO, permanencia);
-        } else {
-            throw new IllegalArgumentException("Os valores de hora fixa e variável não estão definidos.");
-        }
+    public void deleteById(String id) {
+        localVagaRepository.deleteById(id);
     }
 
+    @Override
+    public LocalVagaDTO update(String id, LocalVagaDTO localVagaDTO) {
+        Optional<LocalVaga> optionalLocalVaga = localVagaRepository.findById(id);
+
+        if (optionalLocalVaga.isPresent()) {
+            LocalVaga localVaga = optionalLocalVaga.get();
+
+            localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
+            localVaga.setValorHoraFixa(localVagaDTO.valorHoraFixa());
+            localVaga.setStatus(localVagaDTO.status());
+
+            localVagaRepository.save(localVaga);
+
+            return toDTO(localVaga);
+        } else {
+            throw new RuntimeException("Vaga local não encontrada com o ID: " + id);
+        }
+    }
     @Override
     public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO) {
         var localVaga = toEntity(localVagaDTO);
@@ -49,10 +60,26 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         return toDTO(localVagaRepository.save(localVaga));
     }
 
+    public BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaInputDTO, Permanencia permanencia) {
+        if (localVagaInputDTO.valorHoraFixa() != null) {
+            return calcularValorHoraFixa(localVagaInputDTO, permanencia);
+        } else if (localVagaInputDTO.valorHoraVariavel() != null) {
+            return calcularValorHoraVariavel(localVagaInputDTO, permanencia);
+        } else {
+            throw new IllegalArgumentException("Os valores de hora fixa e variável não estão definidos.");
+        }
+    }
 
     private BigDecimal calcularValorHoraFixa(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
-        BigDecimal valorFixoPorHora = new BigDecimal("10.0");
-        return valorFixoPorHora.multiply(BigDecimal.valueOf(calcularPeriodo(permanencia)));
+
+        BigDecimal valorFixoPorHora = localVagaDTO.valorHoraFixa();
+
+        if (valorFixoPorHora != null && valorFixoPorHora.compareTo(BigDecimal.ZERO) > 0) {
+            float periodo = calcularPeriodo(permanencia);
+            return valorFixoPorHora.multiply(BigDecimal.valueOf(periodo));
+        } else {
+            return BigDecimal.ZERO;
+        }
     }
 
     private BigDecimal calcularValorHoraVariavel(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
@@ -89,7 +116,14 @@ public class LocalVagaServiceImpl implements LocalVagaService {
                 localVaga.getId(),
                 localVaga.getValorHoraVariavel(),
                 localVaga.getValorHoraFixa(),
-                localVaga.getStatus()
+                localVaga.getStatus(),
+                localVaga.getRua(),
+                localVaga.getNumero(),
+                localVaga.getBairro(),
+                localVaga.getCidade(),
+                localVaga.getEstado(),
+                localVaga.getPais(),
+                localVaga.getCep()
         );
     }
 
@@ -99,6 +133,13 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
         localVaga.setValorHoraFixa(localVagaDTO.valorHoraFixa());
         localVaga.setStatus(localVagaDTO.status());
+        localVaga.setRua(localVagaDTO.rua());
+        localVaga.setNumero(localVagaDTO.numero());
+        localVaga.setBairro(localVagaDTO.bairro());
+        localVaga.setCidade(localVagaDTO.cidade());
+        localVaga.setEstado(localVagaDTO.estado());
+        localVaga.setPais(localVagaDTO.pais());
+        localVaga.setCep(localVagaDTO.cep());
         return localVaga;
     }
 }

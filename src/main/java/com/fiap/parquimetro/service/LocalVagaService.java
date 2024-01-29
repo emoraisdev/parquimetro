@@ -6,9 +6,11 @@ import com.fiap.parquimetro.model.Permanencia;
 import java.math.BigDecimal;
 
 public interface LocalVagaService {
-    LocalVagaDTO buscarLocalVaga(String id);
+    public LocalVagaDTO buscarLocalVaga(String id);
 
-    BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaDTO, Permanencia permanencia);
+    public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO);
 
-    LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO);
+    public LocalVagaDTO update(String id, LocalVagaDTO localVagaDTO);
+
+    public void deleteById(String id);
 }

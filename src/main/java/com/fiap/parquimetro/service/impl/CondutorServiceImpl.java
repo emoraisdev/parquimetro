@@ -1,8 +1,10 @@
 package com.fiap.parquimetro.service.impl;
 
 import com.fiap.parquimetro.dto.CondutorDTO;
+import com.fiap.parquimetro.dto.EnderecoDTO;
 import com.fiap.parquimetro.exception.EntityNotFoundException;
 import com.fiap.parquimetro.model.Condutor;
+import com.fiap.parquimetro.model.Endereco;
 import com.fiap.parquimetro.model.enums.Status;
 import com.fiap.parquimetro.repository.CondutorRepository;
 import com.fiap.parquimetro.repository.EnderecoRepository;
@@ -23,6 +25,9 @@ public class CondutorServiceImpl implements CondutorService {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private EnderecoServiceImpl enderecoService;
 
     @Override
     public CondutorDTO criar(CondutorDTO dto) {
@@ -47,6 +52,9 @@ public class CondutorServiceImpl implements CondutorService {
     @Override
     public void update(CondutorDTO condutorDTO) {
         this.get(condutorDTO.id());
+        var condutorEndereco = condutorDTO.endereco();
+
+        enderecoRepository.save(condutorEndereco);
         repository.save(toEntity(condutorDTO));
     }
 
