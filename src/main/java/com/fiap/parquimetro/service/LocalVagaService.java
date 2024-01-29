@@ -11,4 +11,8 @@ public interface LocalVagaService {
     BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaDTO, Permanencia permanencia);
 
     LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO);
+
+    LocalVagaDTO update(String id, LocalVagaDTO localVagaDTO);
+
+    public void deleteById(String id);
 }

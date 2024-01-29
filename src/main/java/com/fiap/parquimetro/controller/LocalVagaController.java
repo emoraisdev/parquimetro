@@ -22,15 +22,21 @@ public class LocalVagaController {
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
-    @GetMapping("/calcularValor")
+    @GetMapping("/id")
     public ResponseEntity<BigDecimal> calcularValorEstacionamento(@RequestBody LocalVagaDTO localVagaDTO,
                                                                   @RequestBody Permanencia permanencia) {
         BigDecimal resultado = localVagaService.calcularValorEstacionamento(localVagaDTO, permanencia);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/{id}")
     public  ResponseEntity<LocalVagaDTO> salvarVaga(@RequestBody LocalVagaDTO localVagaDTO){
         return new ResponseEntity<>(localVagaService.salvarVaga(localVagaDTO),HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<LocalVagaDTO> atualizarVaga(@PathVariable String id, @RequestBody LocalVagaDTO localVagaDTO) {
+        LocalVagaDTO resultado = localVagaService.update(id, localVagaDTO);
+        return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 }

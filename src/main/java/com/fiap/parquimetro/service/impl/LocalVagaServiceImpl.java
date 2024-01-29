@@ -31,6 +31,30 @@ public class LocalVagaServiceImpl implements LocalVagaService {
     }
 
     @Override
+    public void deleteById(String id) {
+        localVagaRepository.deleteById(id);
+    }
+
+    @Override
+    public LocalVagaDTO update(String id, LocalVagaDTO localVagaDTO) {
+        Optional<LocalVaga> optionalLocalVaga = localVagaRepository.findById(id);
+
+        if (optionalLocalVaga.isPresent()) {
+            LocalVaga localVaga = optionalLocalVaga.get();
+
+            localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
+            localVaga.setValorHoraFixa(localVagaDTO.valorHoraFixa());
+            localVaga.setStatus(localVagaDTO.status());
+
+            localVagaRepository.save(localVaga);
+
+            return toDTO(localVaga);
+        } else {
+            throw new RuntimeException("Vaga local não encontrada com o ID: " + id);
+        }
+    }
+
+    @Override
     public BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaInputDTO, Permanencia permanencia) {
         if (localVagaInputDTO.valorHoraFixa() != null) {
             return calcularValorHoraFixa(localVagaInputDTO, permanencia);
