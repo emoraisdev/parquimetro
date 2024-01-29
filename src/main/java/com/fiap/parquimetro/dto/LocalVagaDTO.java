@@ -10,6 +10,13 @@ public record LocalVagaDTO(
         String id,
         BigDecimal valorHoraVariavel,
         BigDecimal valorHoraFixa,
-        Status status)
+        Status status,
+        String rua,
+        String numero,
+        String bairro,
+        String cidade,
+        String estado,
+        String pais,
+        String cep)
 {
 }

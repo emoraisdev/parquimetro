@@ -89,7 +89,14 @@ public class LocalVagaServiceImpl implements LocalVagaService {
                 localVaga.getId(),
                 localVaga.getValorHoraVariavel(),
                 localVaga.getValorHoraFixa(),
-                localVaga.getStatus()
+                localVaga.getStatus(),
+                localVaga.getRua(),
+                localVaga.getNumero(),
+                localVaga.getBairro(),
+                localVaga.getCidade(),
+                localVaga.getEstado(),
+                localVaga.getPais(),
+                localVaga.getCep()
         );
     }
 
@@ -99,6 +106,13 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
         localVaga.setValorHoraFixa(localVagaDTO.valorHoraVariavel());
         localVaga.setStatus(localVagaDTO.status());
+        localVaga.setRua(localVagaDTO.rua());
+        localVaga.setNumero(localVagaDTO.numero());
+        localVaga.setBairro(localVagaDTO.bairro());
+        localVaga.setCidade(localVagaDTO.cidade());
+        localVaga.setEstado(localVagaDTO.estado());
+        localVaga.setPais(localVagaDTO.pais());
+        localVaga.setCep(localVagaDTO.cep());
         return localVaga;
     }
 }

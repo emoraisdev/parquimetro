@@ -9,11 +9,28 @@ import java.math.BigDecimal;
 
 @Document
 @Data
-public class LocalVaga extends Endereco {
+public class LocalVaga {
+
+    @Id
+    private String id;
 
     private BigDecimal valorHoraVariavel;
 
     private BigDecimal valorHoraFixa;
 
     private Status status;
+
+    private String rua;
+
+    private String numero;
+
+    private String bairro;
+
+    private String cidade;
+
+    private String estado;
+
+    private String pais;
+
+    private String cep;
 }
