@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"valorHoraVariavel\": 7,\r\n    \"valorHoraFixa\": 5.9,\r\n    \"status\": 1\r\n}",
+							"raw": "{\r\n    \"valorHoraVariavel\": 3,\r\n    \"valorHoraFixa\": 1.9,\r\n    \"status\": 1,\r\n    \"pais\": \"Brasil\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": \"03499-000\",\r\n    \"cidade\": \"SP\",\r\n    \"bairro\": \"Liberdade\",\r\n    \"rua\": \"Rua das Flores\",\r\n    \"numero\": 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,48 +181,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/veiculos/65b814c68758fa6c29841e2d",
+							"raw": "http://localhost:8080/localVaga/65b82d03ab4ffc2196bebae1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"veiculos",
-								"65b814c68758fa6c29841e2d"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ListarPorCondutor",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"ABC-1234\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Branco\",\r\n    \"idCondutor\": \"0\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/veiculos/bycondutor/65b813ce36f21640c844c456",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"veiculos",
-								"bycondutor",
-								"65b813ce36f21640c844c456"
+								"localVaga",
+								"65b82d03ab4ffc2196bebae1"
 							]
 						}
 					},
@@ -235,7 +202,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"65b8149b36f21640c844c459\",\r\n    \"placa\": \"ABC-1111\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Vermelho\",\r\n    \"status\": 1,\r\n    \"idCondutor\": \"65b813ce36f21640c844c456\"\r\n}",
+							"raw": "{\r\n    \"valorHoraVariavel\": 3,\r\n    \"valorHoraFixa\": 1.9,\r\n    \"status\": 1,\r\n    \"pais\": \"USA\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": \"03499-000\",\r\n    \"cidade\": \"SP\",\r\n    \"bairro\": \"Liberdade\",\r\n    \"rua\": \"Rua das Flores\",\r\n    \"numero\": 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -243,14 +210,44 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/veiculos",
+							"raw": "http://localhost:8080/localVaga/65b82d03ab4ffc2196bebae1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"veiculos"
+								"localVaga",
+								"65b82d03ab4ffc2196bebae1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valorHoraVariavel\": 3,\r\n    \"valorHoraFixa\": 1.9,\r\n    \"status\": 1,\r\n    \"pais\": \"USA\",\r\n    \"estado\": \"São Paulo\",\r\n    \"cep\": \"03499-000\",\r\n    \"cidade\": \"SP\",\r\n    \"bairro\": \"Liberdade\",\r\n    \"rua\": \"Rua das Flores\",\r\n    \"numero\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/localVaga/65b82d03ab4ffc2196bebae1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localVaga",
+								"65b82d03ab4ffc2196bebae1"
 							]
 						}
 					},
@@ -491,7 +488,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idCondutor\": \"65b82485f6a2692327e2c574\",\r\n    \"idVeiculo\": \"65b82499f6a2692327e2c575\",\r\n    \"idLocalVaga\": \"65b81686e00b4658926a397a\",\r\n    \"tempoFixo\": true,\r\n    \"horasTempoFixo\": 4\r\n}",
+							"raw": "{\r\n    \"idCondutor\": \"65b82bebc305cf5da17da2c2\",\r\n    \"idVeiculo\": \"65b82c16c305cf5da17da2c3\",\r\n    \"idLocalVaga\": \"65b82d03ab4ffc2196bebae1\",\r\n    \"tempoFixo\": true,\r\n    \"horasTempoFixo\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

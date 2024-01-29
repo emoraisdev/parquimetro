@@ -136,7 +136,7 @@ public class PermanenciaServiceImpl implements PermanenciaService {
         } else {
             Duration duracao = Duration.between(permanencia.getEntrada(), permanencia.getSaida());
             BigDecimal valorTotal = permanencia.getLocal().getValorHoraVariavel()
-                    .multiply(new BigDecimal(duracao.toHours()));
+                    .multiply(new BigDecimal(duracao.toHours() < 1 ? 1 : duracao.toHours()));
 
             recibo = new Recibo(
                     null,

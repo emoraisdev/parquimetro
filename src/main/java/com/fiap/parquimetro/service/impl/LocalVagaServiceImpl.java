@@ -1,6 +1,7 @@
 package com.fiap.parquimetro.service.impl;
 
 import com.fiap.parquimetro.dto.LocalVagaDTO;
+import com.fiap.parquimetro.exception.BusinessException;
 import com.fiap.parquimetro.model.LocalVaga;
 import com.fiap.parquimetro.model.Permanencia;
 import com.fiap.parquimetro.repository.LocalVagaRepository;
@@ -26,7 +27,7 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         if (localVaga.isPresent()) {
             return toDTO(localVaga.get());
         } else {
-            throw new RuntimeException("Não existe informações cadastradas no estacionamento com esse ID");
+            throw new BusinessException("Não existe informações cadastradas no estacionamento com esse ID");
         }
     }
 
