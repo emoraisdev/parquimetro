@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "ce1717b6-0d17-4bae-8c33-18793f835632",
+		"_postman_id": "fba299dc-7a3b-4a3c-a377-f702463cc1c8",
 		"name": "Parquimetro",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "843251"
+		"_exporter_id": "17260916",
+		"_collection_link": "https://crimson-shuttle-91101.postman.co/workspace/Parquimetro~c3be8a7c-602e-4ed0-a0bd-d3b05442d471/collection/17260916-fba299dc-7a3b-4a3c-a377-f702463cc1c8?action=share&source=collection_link&creator=17260916"
 	},
 	"item": [
 		{
@@ -212,7 +213,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Jose da Silva\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": 986767788,\n    \"status\": 1,\n    \"endereco\": {\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"idFormaPagamentoPreferida\":\"65b080244cc930175c0785b3\"\n}",
+							"raw": "{\n    \"nome\": \"Andre da Silva\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": 986767788,\n    \"status\": 1,\n    \"endereco\": {\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"formaPagamentoPreferida\":\"CARTAO_DEBITO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -348,6 +349,88 @@
 							"path": [
 								"notificacao",
 								"65b1c01a4111b7770dd8843e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permanencia",
+			"item": [
+				{
+					"name": "Salvar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"condutor\": {\r\n        \"id\": \"65b70b2348efee4010eae386\"\r\n    },\r\n    \"veiculo\": {\r\n        \"id\":\"65ae81cc44a3bd6d608cbee6\"\r\n    },\r\n    \"local\": {\r\n        \"id\":\"65b68e8595b7bc78256f86c5\"\r\n    },\r\n    \"entrada\": \"2017-01-13T17:09:42.411\",\r\n    \"saida\": \"2017-01-13T17:11:42.411\",\r\n    \"pagamentoStatus\": \"NAO_PAGO\",\r\n    \"permanenciaStatus\": \"EM_ANDAMENTO\",\r\n    \"tempoFixo\": false,\r\n    \"horasTempoFixo\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/permanencia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"permanencia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/permanencia/65b70b2e48efee4010eae387",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"permanencia",
+								"65b70b2e48efee4010eae387"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "finaliza",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/permanencia?id=65b70b2e48efee4010eae387&horaSaida=2017-01-13T21:11:42.411",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"permanencia"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "65b70b2e48efee4010eae387"
+								},
+								{
+									"key": "horaSaida",
+									"value": "2017-01-13T21:11:42.411"
+								}
 							]
 						}
 					},
