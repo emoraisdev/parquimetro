@@ -5,9 +5,7 @@ import com.fiap.parquimetro.dto.LocalVagaDTO;
 import com.fiap.parquimetro.dto.PermanenciaDTO;
 import com.fiap.parquimetro.exception.BusinessException;
 import com.fiap.parquimetro.exception.EntityNotFoundException;
-import com.fiap.parquimetro.model.Notificacao;
-import com.fiap.parquimetro.model.Permanencia;
-import com.fiap.parquimetro.model.Recibo;
+import com.fiap.parquimetro.model.*;
 import com.fiap.parquimetro.model.enums.NotificaoStatus;
 import com.fiap.parquimetro.model.enums.PagamentoStatus;
 import com.fiap.parquimetro.model.enums.PermanenciaStatus;
@@ -54,12 +52,16 @@ public class PermanenciaServiceImpl implements PermanenciaService {
     public PermanenciaDTO criar(PermanenciaDTO dto) {
         var permanencia = toEntity(dto);
         verificaParemetros(permanencia);
+        permanencia.setEntrada(LocalDateTime.now());
+        permanencia.setPagamentoStatus(PagamentoStatus.NAO_PAGO);
+        permanencia.setPermanenciaStatus(PermanenciaStatus.EM_ANDAMENTO);
         permanencia = permanenciaRepository.save(permanencia);
 
         if (permanencia.getTempoFixo()) {
             permanencia.setSaida(permanencia.getEntrada().plusHours(permanencia.getHorasTempoFixo()));
             permanencia.setPagamentoStatus(PagamentoStatus.PAGO);
             geraRecibo(permanencia, true);
+            permanencia = permanenciaRepository.save(permanencia);
         }
         return toDTO(permanencia);
     }
@@ -103,11 +105,11 @@ public class PermanenciaServiceImpl implements PermanenciaService {
 
     }
 
-    public void finalizaPermanencia(String id, LocalDateTime horaSaida){
+    public void finalizaPermanencia(String id){
         Permanencia permanencia = permanenciaRepository.findById(id).orElseThrow( ()-> new BusinessException("Permanencia não encontrada"));
         permanencia.setPermanenciaStatus(PermanenciaStatus.FINALIZADA);
         permanencia.setPagamentoStatus(PagamentoStatus.PAGO);
-        permanencia.setSaida(horaSaida);
+        permanencia.setSaida(LocalDateTime.now());
         geraRecibo(permanencia,false);
         update(toDTO(permanencia));
     }
@@ -163,10 +165,6 @@ public class PermanenciaServiceImpl implements PermanenciaService {
         if (permanencia.getTempoFixo() && duracao.toHours() >= permanencia.getHorasTempoFixo()) {
             permanencia.setPermanenciaStatus(PermanenciaStatus.FINALIZADA);
             permanenciaRepository.save(permanencia);
-        } else if (!permanencia.getTempoFixo() && duracao.toHours() >= permanencia.getHorasTempoFixo()) {
-            Integer novaHora = permanencia.getHorasTempoFixo() + 1;
-            permanencia.setHorasTempoFixo(novaHora);
-            permanenciaRepository.save(permanencia);
         } else {
             verificarProximidadeFim(permanencia);
         }
@@ -191,16 +189,25 @@ public class PermanenciaServiceImpl implements PermanenciaService {
 
     private boolean isProximoFim(Permanencia permanencia) {
         LocalDateTime now = LocalDateTime.now();
-        Duration tempoRestante = Duration.between(now, permanencia.getSaida());
+
+        Duration tempoRestante = Duration.ZERO;
+        if (permanencia.getTempoFixo()) {
+            tempoRestante = Duration.between(now, permanencia.getSaida());
+        } else {
+            var minutos = Duration.between(permanencia.getEntrada(), now).toMinutes() % 60;
+
+            tempoRestante = Duration.ofHours(1).minusMinutes(minutos);
+        }
+
         return tempoRestante.toMinutes() <= 15;
     }
 
     public PermanenciaDTO toDTO(Permanencia permanencia) {
         return new PermanenciaDTO(
                 permanencia.getId(),
-                permanencia.getCondutor(),
-                permanencia.getVeiculo(),
-                permanencia.getLocal(),
+                permanencia.getCondutor().getId(),
+                permanencia.getVeiculo().getId(),
+                permanencia.getLocal().getId(),
                 permanencia.getEntrada(),
                 permanencia.getSaida(),
                 permanencia.getTipoPagamento(),
@@ -214,9 +221,9 @@ public class PermanenciaServiceImpl implements PermanenciaService {
     public Permanencia toEntity(PermanenciaDTO dto) {
         return new Permanencia(
                 dto.id(),
-                dto.condutor(),
-                dto.veiculo(),
-                dto.local(),
+                new Condutor(dto.idCondutor()),
+                new Veiculo(dto.idVeiculo()),
+                new LocalVaga(dto.idLocalVaga()),
                 dto.entrada(),
                 dto.saida(),
                 dto.tipoPagamento(),

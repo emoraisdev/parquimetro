@@ -28,8 +28,8 @@ public class PermanenciaController {
     }
 
     @PutMapping
-    public ResponseEntity<PermanenciaDTO> finaliza(@RequestParam String id, @RequestParam LocalDateTime horaSaida){
-        service.finalizaPermanencia(id, horaSaida);
+    public ResponseEntity<PermanenciaDTO> finaliza(@RequestParam String id){
+        service.finalizaPermanencia(id);
         return ResponseEntity.ok().build();
     }
 }

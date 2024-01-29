@@ -75,7 +75,7 @@ public class CondutorServiceImpl implements CondutorService {
                 condutor.getDataNascimento(),
                 condutor.getEmail(),
                 condutor.getTelefone(),
-                condutor.getStatus().getValue(),
+                condutor.getStatus() != null ? condutor.getStatus().getValue() : null,
                 condutor.getEndereco(),
                 condutor.getOpcaoPagamentoPreferida()
         );
