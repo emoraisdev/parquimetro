@@ -53,8 +53,13 @@ public class LocalVagaServiceImpl implements LocalVagaService {
             throw new RuntimeException("Vaga local não encontrada com o ID: " + id);
         }
     }
-
     @Override
+    public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO) {
+        var localVaga = toEntity(localVagaDTO);
+
+        return toDTO(localVagaRepository.save(localVaga));
+    }
+
     public BigDecimal calcularValorEstacionamento(LocalVagaDTO localVagaInputDTO, Permanencia permanencia) {
         if (localVagaInputDTO.valorHoraFixa() != null) {
             return calcularValorHoraFixa(localVagaInputDTO, permanencia);
@@ -63,13 +68,6 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         } else {
             throw new IllegalArgumentException("Os valores de hora fixa e variável não estão definidos.");
         }
-    }
-
-    @Override
-    public LocalVagaDTO salvarVaga(LocalVagaDTO localVagaDTO) {
-        var localVaga = toEntity(localVagaDTO);
-
-        return toDTO(localVagaRepository.save(localVaga));
     }
 
     private BigDecimal calcularValorHoraFixa(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
@@ -83,7 +81,6 @@ public class LocalVagaServiceImpl implements LocalVagaService {
             return BigDecimal.ZERO;
         }
     }
-
 
     private BigDecimal calcularValorHoraVariavel(LocalVagaDTO localVagaDTO, Permanencia permanencia) {
 
