@@ -11,13 +11,11 @@ import java.time.LocalDateTime;
 
 public record PermanenciaDTO(
         String id,
-        Condutor condutor,
-        Veiculo veiculo,
-        LocalVaga local,
+        String idCondutor,
+        String idVeiculo,
+        String idLocalVaga,
         LocalDateTime entrada,
-
         LocalDateTime saida,
-
         TipoFormaPagamento tipoPagamento,
         PagamentoStatus pagamentoStatus,
         PermanenciaStatus permanenciaStatus,

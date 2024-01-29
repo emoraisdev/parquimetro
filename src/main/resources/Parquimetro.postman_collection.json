@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fba299dc-7a3b-4a3c-a377-f702463cc1c8",
+		"_postman_id": "fc0895db-31c9-4c1c-bbbe-20a8dcd92366",
 		"name": "Parquimetro",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "17260916",
-		"_collection_link": "https://crimson-shuttle-91101.postman.co/workspace/Parquimetro~c3be8a7c-602e-4ed0-a0bd-d3b05442d471/collection/17260916-fba299dc-7a3b-4a3c-a377-f702463cc1c8?action=share&source=collection_link&creator=17260916"
+		"_exporter_id": "23155843"
 	},
 	"item": [
 		{
@@ -17,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"ABC-1235\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Argus\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Azul\",\r\n    \"idCondutor\": \"0\"\r\n}",
+							"raw": "{\r\n    \"placa\": \"ABC-1236\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Argus\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Azul\",\r\n    \"idCondutor\": \"65b82485f6a2692327e2c574\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -56,7 +55,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/veiculos/65a1f4cb750f1a4d90be412",
+							"raw": "http://localhost:8080/veiculos/65b814c68758fa6c29841e2d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -64,7 +63,7 @@
 							"port": "8080",
 							"path": [
 								"veiculos",
-								"65a1f4cb750f1a4d90be412"
+								"65b814c68758fa6c29841e2d"
 							]
 						}
 					},
@@ -88,7 +87,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/veiculos/bycondutor/0",
+							"raw": "http://localhost:8080/veiculos/bycondutor/65b813ce36f21640c844c456",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -97,7 +96,7 @@
 							"path": [
 								"veiculos",
 								"bycondutor",
-								"0"
+								"65b813ce36f21640c844c456"
 							]
 						}
 					},
@@ -110,7 +109,133 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"65a288448aae794a1a65c558\",\r\n    \"placa\": \"ABC-1111\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Vermelho\",\r\n    \"status\": 1,\r\n    \"idCondutor\": \"0\"\r\n}",
+							"raw": "{\r\n    \"id\": \"65b8149b36f21640c844c459\",\r\n    \"placa\": \"ABC-1111\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Vermelho\",\r\n    \"status\": 1,\r\n    \"idCondutor\": \"65b813ce36f21640c844c456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LocalVaga",
+			"item": [
+				{
+					"name": "Salvar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valorHoraVariavel\": 7,\r\n    \"valorHoraFixa\": 5.9,\r\n    \"status\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/localVaga",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"localVaga"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos/65b814c68758fa6c29841e2d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos",
+								"65b814c68758fa6c29841e2d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarPorCondutor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placa\": \"ABC-1234\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Branco\",\r\n    \"idCondutor\": \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/veiculos/bycondutor/65b813ce36f21640c844c456",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"veiculos",
+								"bycondutor",
+								"65b813ce36f21640c844c456"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"65b8149b36f21640c844c459\",\r\n    \"placa\": \"ABC-1111\",\r\n    \"marca\": \"Fiat\",\r\n    \"modelo\": \"Uno\",\r\n    \"tipo\": 0,\r\n    \"cor\": \"Vermelho\",\r\n    \"status\": 1,\r\n    \"idCondutor\": \"65b813ce36f21640c844c456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,7 +311,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/recibos/bycondutor/0",
+							"raw": "http://localhost:8080/recibos/bycondutor/65b82485f6a2692327e2c574",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -195,7 +320,7 @@
 							"path": [
 								"recibos",
 								"bycondutor",
-								"0"
+								"65b82485f6a2692327e2c574"
 							]
 						}
 					},
@@ -213,7 +338,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Andre da Silva\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": 986767788,\n    \"status\": 1,\n    \"endereco\": {\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"formaPagamentoPreferida\":\"CARTAO_DEBITO\"\n}",
+							"raw": "{\n    \"nome\": \"Andre da Silva 2\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": 986767788,\n    \"status\": 1,\n    \"endereco\": {\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"formaPagamentoPreferida\":\"CARTAO_DEBITO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -240,7 +365,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/condutor/65b0853c66500d264cfdfc9b",
+							"raw": "http://localhost:8080/condutor/65b813ce36f21640c844c456",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -248,7 +373,7 @@
 							"port": "8080",
 							"path": [
 								"condutor",
-								"65b0853c66500d264cfdfc9b"
+								"65b813ce36f21640c844c456"
 							]
 						}
 					},
@@ -280,7 +405,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"65b0853c66500d264cfdfc9b\",\n    \"nome\": \"Jose da Silva testte alteracao\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": \"986767788\",\n    \"status\": 1,\n    \"endereco\": {\n        \"id\": \"65b0853c66500d264cfdfc9a\",\n        \"pais\": \"Brasil\",\n        \"estado\": \"São Paulo\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"SP\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"idFormaPagamentoPreferida\": \"65b080244cc930175c0785b3\"\n}",
+							"raw": "{\n    \"id\": \"65b8141136f21640c844c458\",\n    \"nome\": \"Jose da Silva testte alteracao\",\n    \"dataNascimento\": \"2001-12-28\",\n    \"email\": \"josesilva@teste.com.br\",\n    \"telefone\": \"986767788\",\n    \"status\": 1,\n    \"endereco\": {\n        \"id\": \"65b8141136f21640c844c457\",\n        \"pais\": \"Brasil\",\n        \"estado\": \"Curitiba\",\n        \"cep\": \"03499-000\",\n        \"cidade\": \"PR\",\n        \"bairro\": \"Liberdade\",\n        \"rua\": \"Rua das Flores\",\n        \"numero\": 10\n    },\n    \"formaPagamentoPreferida\": \"CARTAO_DEBITO\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -340,7 +465,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/notificacao/65b1c01a4111b7770dd8843e",
+							"raw": "http://localhost:8080/notificacao/65b826b7e4983413a4049148",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -348,7 +473,7 @@
 							"port": "8080",
 							"path": [
 								"notificacao",
-								"65b1c01a4111b7770dd8843e"
+								"65b826b7e4983413a4049148"
 							]
 						}
 					},
@@ -366,7 +491,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"condutor\": {\r\n        \"id\": \"65b70b2348efee4010eae386\"\r\n    },\r\n    \"veiculo\": {\r\n        \"id\":\"65ae81cc44a3bd6d608cbee6\"\r\n    },\r\n    \"local\": {\r\n        \"id\":\"65b68e8595b7bc78256f86c5\"\r\n    },\r\n    \"entrada\": \"2017-01-13T17:09:42.411\",\r\n    \"saida\": \"2017-01-13T17:11:42.411\",\r\n    \"pagamentoStatus\": \"NAO_PAGO\",\r\n    \"permanenciaStatus\": \"EM_ANDAMENTO\",\r\n    \"tempoFixo\": false,\r\n    \"horasTempoFixo\": 0\r\n}",
+							"raw": "{\r\n    \"idCondutor\": \"65b82485f6a2692327e2c574\",\r\n    \"idVeiculo\": \"65b82499f6a2692327e2c575\",\r\n    \"idLocalVaga\": \"65b81686e00b4658926a397a\",\r\n    \"tempoFixo\": true,\r\n    \"horasTempoFixo\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -393,7 +518,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/permanencia/65b70b2e48efee4010eae387",
+							"raw": "http://localhost:8080/permanencia/65b8249ef6a2692327e2c576",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -401,7 +526,7 @@
 							"port": "8080",
 							"path": [
 								"permanencia",
-								"65b70b2e48efee4010eae387"
+								"65b8249ef6a2692327e2c576"
 							]
 						}
 					},
@@ -413,7 +538,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/permanencia?id=65b70b2e48efee4010eae387&horaSaida=2017-01-13T21:11:42.411",
+							"raw": "http://localhost:8080/permanencia?id=65b81ed952512e2d9478b87b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -425,11 +550,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "65b70b2e48efee4010eae387"
-								},
-								{
-									"key": "horaSaida",
-									"value": "2017-01-13T21:11:42.411"
+									"value": "65b81ed952512e2d9478b87b"
 								}
 							]
 						}

@@ -50,8 +50,8 @@ public class ReciboServiceImpl implements ReciboService {
                 recibo.getValorHora(),
                 recibo.getValorTotal(),
                 recibo.getTempoPermanencia(),
-                "0",
-                "0"
+                recibo.getPermanencia().getId(),
+                recibo.getCondutor().getId()
         );
     }
 }

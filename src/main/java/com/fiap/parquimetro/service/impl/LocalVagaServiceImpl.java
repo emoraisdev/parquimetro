@@ -118,7 +118,7 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         return minutes / 60.0f;
     }
 
-    private LocalVagaDTO toDTO(LocalVaga localVaga) {
+    public LocalVagaDTO toDTO(LocalVaga localVaga) {
         return new LocalVagaDTO(
                 localVaga.getId(),
                 localVaga.getValorHoraVariavel(),
@@ -138,7 +138,7 @@ public class LocalVagaServiceImpl implements LocalVagaService {
         LocalVaga localVaga = new LocalVaga();
         localVaga.setId(localVagaDTO.id());
         localVaga.setValorHoraVariavel(localVagaDTO.valorHoraVariavel());
-        localVaga.setValorHoraFixa(localVagaDTO.valorHoraVariavel());
+        localVaga.setValorHoraFixa(localVagaDTO.valorHoraFixa());
         localVaga.setStatus(localVagaDTO.status());
         localVaga.setRua(localVagaDTO.rua());
         localVaga.setNumero(localVagaDTO.numero());

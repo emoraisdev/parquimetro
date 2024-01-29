@@ -16,7 +16,7 @@ public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    protected String id;
 
     @Column(nullable = false)
     private String rua;

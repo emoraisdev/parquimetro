@@ -66,10 +66,10 @@ public class VeiculoServiceImpl implements VeiculoService {
                 veiculo.getPlaca(),
                 veiculo.getMarca(),
                 veiculo.getModelo(),
-                veiculo.getTipo().getValue(),
+                veiculo.getTipo() != null ? veiculo.getTipo().getValue() : null,
                 veiculo.getCor(),
-                veiculo.getStatus().getValue(),
-                "0"
+                veiculo.getStatus() != null ? veiculo.getStatus().getValue() : null,
+                veiculo.getCondutor().getId()
         );
     }
 }

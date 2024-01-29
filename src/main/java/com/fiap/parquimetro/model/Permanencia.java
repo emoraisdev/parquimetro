@@ -21,13 +21,13 @@ public class Permanencia {
     @Id
     private String id;
 
-    @DBRef
+    @DBRef(lazy = true)
     private Condutor condutor;
 
-    @DBRef
+    @DBRef(lazy = true)
     private Veiculo veiculo;
 
-    @DBRef
+    @DBRef(lazy = true)
     private LocalVaga local;
 
     private LocalDateTime entrada;
