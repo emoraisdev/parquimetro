@@ -35,7 +35,7 @@ public class LocalVagaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<LocalVagaDTO> atualizarVaga(@PathVariable String id, @RequestBody LocalVagaDTO localVagaDTO) {
+    public ResponseEntity<LocalVagaDTO> update(@PathVariable String id, @RequestBody LocalVagaDTO localVagaDTO) {
         LocalVagaDTO resultado = localVagaService.update(id, localVagaDTO);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
